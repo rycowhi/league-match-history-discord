@@ -39,6 +39,9 @@ def determine_match_type(match_details: dict) -> str:
     game_mode = match_details["info"]["gameMode"]
     queue_id = match_details["info"]["queueId"]
 
+    # CLASSIC400 - Draft Pick
+    # ARAM450 - ARAM 
+
     return f"{game_mode}{queue_id}"
 
 
