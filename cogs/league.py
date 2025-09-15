@@ -58,7 +58,7 @@ def get_midnight_and_now_epoch() -> tuple[int, int]:
     midnight = datetime.datetime.combine(current_time, datetime.datetime.min.time())
 
     # TODO remove week override
-    midnight = midnight - datetime.timedelta(days=7)
+    midnight = midnight - datetime.timedelta(days=14)
     
 
     midnight_time_epoch = int(midnight.timestamp())
