@@ -39,10 +39,13 @@ def determine_match_type(match_details: dict) -> str:
     game_mode = match_details["info"]["gameMode"]
     queue_id = match_details["info"]["queueId"]
 
-    # CLASSIC400 - Draft Pick
-    # ARAM450 - ARAM 
-
-    return f"{game_mode}{queue_id}"
+    match (game_mode, queue_id):
+        case ("CLASSIC", "400"):
+            return "Summoner's Rift (Draft Pick)"
+        case ("ARAM", "450"):
+            return "All Random All Mid (ARAM)"
+        case _:
+            return f"{game_mode}{queue_id}"
 
 
 def did_player_win_match(puuid: str, match_details: dict) -> bool:
@@ -61,8 +64,7 @@ def get_midnight_and_now_epoch() -> tuple[int, int]:
     midnight = datetime.datetime.combine(current_time, datetime.datetime.min.time())
 
     # TODO remove week override
-    #midnight = midnight - datetime.timedelta(days=14)
-    
+    # midnight = midnight - datetime.timedelta(days=14)
 
     midnight_time_epoch = int(midnight.timestamp())
     current_time_epoch = int(current_time.timestamp())
