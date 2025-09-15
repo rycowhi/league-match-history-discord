@@ -37,7 +37,7 @@ def get_match_details(match_id: str, api_key: str):
 
 def determine_match_type(match_details: dict) -> str:
     game_mode = match_details["info"]["gameMode"]
-    queue_id = match_details["info"]["queueId"]
+    queue_id = str(match_details["info"]["queueId"])
 
     match (game_mode, queue_id):
         case ("CLASSIC", "400"):
