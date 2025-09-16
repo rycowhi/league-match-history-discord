@@ -44,6 +44,8 @@ def determine_match_type(match_details: dict) -> str:
             return "Summoner's Rift (Draft Pick)"
         case ("ARAM", "450"):
             return "All Random All Mid (ARAM)"
+        case ("CHERRY", "1700"):
+            return "Arena"
         case _:
             return f"{game_mode}{queue_id}"
 
